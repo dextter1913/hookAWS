@@ -4,6 +4,7 @@ header("Content-Type: JSON");
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'POST':
         $_POST = json_decode(file_get_contents('php://input'), true);
+        file_put_contents('log.txt', json_encode($_POST));
         echo json_encode($_POST);
 
         break;
