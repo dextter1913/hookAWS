@@ -4,11 +4,11 @@ header("Content-Type: JSON");
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'POST':
         $_POST = json_decode(file_get_contents('php://input'), true);
-        shell_exec("sudo cd /var/www/html/stefy && sudo git pull origin master");
-        shell_exec("sudo touch log.txt");
+        shell_exec("cd /var/www/html/stefy && sudo git pull origin master");
+        shell_exec("touch log.txt");
         file_put_contents('log.txt', json_encode($_POST));
         echo json_encode($_POST);
-        
+
         break;
     case 'PUT':
         $_PUT = json_decode(file_get_contents('php://input'), true);
